@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     var counter = 0
-    var timer = Timer()
+    var timer1 = Timer()
     var running = false
     
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
     
     @IBAction func stopButton0(_ sender: AnyObject) {
-        timer.invalidate()
+        timer1.invalidate()
         running = false
         counter = 0
         timeLabel.text = "00:00:00"
@@ -34,19 +34,18 @@ class ViewController: UIViewController {
    
 
   @IBAction func pauseButton(_ sender: AnyObject) {
-       timer.invalidate()
+       timer1.invalidate()
        running = false
    }
     
     @IBAction func playButton(_ sender: AnyObject) {
         if !running {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
+        timer1 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
         running = true
-    }
+        }
     }
     @objc func UpdateTime(){
         counter =  counter + 1;
-//        var intouter =
         var s0 = "0"
         var s1 = "0"
         var s2 = "0"
@@ -56,5 +55,6 @@ class ViewController: UIViewController {
         
         timeLabel.text = String(format:"%@%d:%@%d:%@%d",s0,counter/3600,s1,(counter/60)%60,s2,counter%60);
     }
+    
 }
 
